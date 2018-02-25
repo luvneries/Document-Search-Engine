@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <div class="jumbotron text-center">
+    <h1>Document Search Engine</h1>
+    <!--p class="lead">This application is built to search document in Odyssey  / WIKI / Confluence</p-->
+    <h3 class="lead">This application is built to search document in Odyssey  / WIKI / Confluence</h3>
+  </div>
+
+  {% if session['app'] != "HOME" %}
+    <h3><small>Welcome to {{session['app']}} repository</small></h3>
+  {% endif %}
+  <div class="form-group">
+    <form action="/" method="post">
+    <!--label for="comment">What are you looking for:</label-->
+    <textarea class="form-control" rows="3" id="comment" name="msg" placeholder="Type your queries here"/></textarea>
+    <br>
+    <p><input type="submit" class="btn btn-primary" value="Submit"></p>
+  </div>
+
+    <script type="text/javascript">
+            $(document).ready(function () {
+                $("#btn").click(function () {
+                    alert($("input[type=radio]:checked").val());
+                });
+            });
+    </script>
+    <br>
+    User Feedback: Did you get correct document? <br><br>
+    <asp:Button ID="btn" runat="server" Text="Go" />
+    <input type="radio" name="feedback" value="1" />Yes<br><br>
+    <input type="radio" name="feedback" value="2" />No
+
+
+<!--
+  <button onclick="Feedback()">Feedback</button>
+  <p id="feedback"></p>
+  <script>
+  function Feedback() {
+    var feedback = prompt("Did you get correct document?");
+    if (person != null) {
+        document.getElementById("feedback").innerHTML =
+        feeback;
+    }
+  }
+</script>
+
+-->
+{% endblock %}
